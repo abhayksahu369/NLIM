@@ -25,18 +25,18 @@ const QRScanner: React.FC<QRScannerProps> = ({ onClose, onScanSuccess }) => {
         const { Html5Qrcode } = await import('html5-qrcode');
         html5QrCode = new Html5Qrcode("reader");
         
-        const qrboxFunction = (viewfinderWidth: number, viewfinderHeight: number) => {
-          const minEdgePercentage = window.innerWidth < 768 ? 1 : 0.7; // Larger QR box for mobile
-          const minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
-          const qrboxSize = Math.max(Math.floor(minEdgeSize * minEdgePercentage), 200); // Ensure a minimum size
-          return { width: qrboxSize, height: qrboxSize }; // Always a square
-        };
+        // const qrboxFunction = (viewfinderWidth: number, viewfinderHeight: number) => {
+        //   const minEdgePercentage = window.innerWidth < 768 ? 1 : 0.7; // Larger QR box for mobile
+        //   const minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
+        //   const qrboxSize = Math.max(Math.floor(minEdgeSize * minEdgePercentage), 200); // Ensure a minimum size
+        //   return { width: qrboxSize, height: qrboxSize }; // Always a square
+        // };
         
         await html5QrCode.start(
           { facingMode: "environment" },
           {
             fps: 10,
-            qrbox: qrboxFunction,
+            qrbox: 250,
           },
           (decodedText: string) => {
             // On successful scan
