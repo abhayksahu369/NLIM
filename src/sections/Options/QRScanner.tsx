@@ -29,7 +29,7 @@ const QRScanner: React.FC<QRScannerProps> = ({ onClose, onScanSuccess }) => {
           const minEdgePercentage = window.innerWidth < 768 ? 1 : 0.7; // Larger QR box for mobile
           const minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
           const qrboxSize = Math.max(Math.floor(minEdgeSize * minEdgePercentage), 200); // Ensure a minimum size
-          return { width: qrboxSize, height: qrboxSize }; // Always a square
+          return { width: "200", height: "200" }; // Always a square
         };
         
         await html5QrCode.start(
